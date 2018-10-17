@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-app';
+  title: string = ' my-app!';
+  birthDay: Date = new Date();
+  users: Array<any> = [{
+    firstName: 'Ivan', lastName: 'Ivanov'},
+    {firstName: 'Petr', lastName: 'Petrov'},
+    {firstName: 'Vasya', lastName: 'Vasyily'},
+  ];
+
+  onButtinClicked() {
+    this.title = 'button clicked';
+  }
 }
