@@ -1,0 +1,17 @@
+<p>
+  Список пользователей:
+</p>
+
+<ul>
+    <li *ngFor="let user of users">
+        {{ user.firstName }} {{ user.lastName }}
+    </li>
+</ul>
+
+<h3>created on : {{ usersService.creationDate | date: 'dd.MM.yyyy &nbsp; HH:mm:ss.SSS'}}</h3>
+
+<h3>clicked {{ usersService.clickCount }}</h3>
+
+<button (click)="usersService.increase()">
+    click
+</button>
