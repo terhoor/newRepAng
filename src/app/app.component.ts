@@ -6,7 +6,6 @@ import { UsersService } from './users.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  providers: [UsersService]
 })
 export class AppComponent {
 
