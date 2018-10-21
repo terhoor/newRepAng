@@ -1,3 +1,13 @@
-<p>
-  user-card works!
-</p>
+<div class="user-card">
+    <h2>Карта пользователя: </h2>
+
+    <p [hidden]="!card.lastName">
+        <span >Фамилия: {{ card.lastName }}</span>
+    </p>
+    <p [hidden]="!card.firstName">
+        <span >Имя: {{ card.firstName }}</span>
+    </p>
+    <p [hidden]="!card.surName">
+        <span >Отчетво: {{ card.surName }}</span>
+    </p>
+</div>

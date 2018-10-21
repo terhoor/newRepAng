@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {User} from '../shared/user.model';
 
 @Component({
   selector: 'app-user-list',
@@ -6,14 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-list.component.css']
 
 })
-export class UserListComponent implements OnInit {
-
-    public users: Array<any>;
-
-    constructor() {
-    }
-
-  ngOnInit() {
-  }
+export class UserListComponent {
+    @Input() users: User[] = [];
 
 }

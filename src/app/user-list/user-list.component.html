@@ -1,3 +1,4 @@
-<p>
-  Список пользователей:
-</p>
+<h2>Список пользователей</h2>
+<div *ngFor="let user of users">
+  <app-user [user]="user"></app-user>
+</div>
