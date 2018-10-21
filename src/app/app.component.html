@@ -1,5 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <app-user-list></app-user-list>
-  <app-user-table></app-user-table>
-</div>
+<app-user-form [(user)]="currentUser" (userChange)="addUser()"></app-user-form>
+<app-user-card></app-user-card>
+<app-user-list></app-user-list>

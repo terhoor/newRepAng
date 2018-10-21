@@ -1,0 +1,15 @@
+<h2>Добавить пользователя: </h2>
+
+<p>
+    <label for="lastName">Фамилия: </label>
+    <input id="lastName" type="text" [(ngModel)]="user.lastName">
+</p>
+<p>
+    <label for="firstName">Имя: </label>
+    <input id="firstName" type="text" [(ngModel)]="user.firstName">
+</p>
+<p>
+    <label for="surName">Отчество: </label>
+    <input id="surName" type="text" [(ngModel)]="user.surName">
+</p>
+<button (click)="onClick()">Добавить</button>
