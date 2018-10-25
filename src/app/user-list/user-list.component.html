@@ -1,4 +1,8 @@
 <h2>Список пользователей</h2>
-<div *ngFor="let user of users">
-  <app-user [user]="user"></app-user>
+<div *ngFor="let user of users; let i = index">
+    <app-user [user]="user"></app-user>
+    <app-user-btn name="удалить" [indexUser]="i" (deleteChange)="onDelete($event)"></app-user-btn>  
+    <app-user-btn name="изменить" [indexUser]="i" (editChange)="onEdit($event)"></app-user-btn>  
 </div>
+<app-user-btn [countUsers]="users.length" name="Удалить последнего пользователя" (deleteChange)="onDelete($event)"></app-user-btn>
+<app-user-btn name="отменить" (cancelChange)="onCancel()"></app-user-btn>
