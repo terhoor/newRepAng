@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {User} from './shared/user.model';
-import { isNumber } from 'util';
+
 
 const LOCAL_USERS_KEY = 'users';
 
@@ -14,11 +14,15 @@ export class AppComponent {
     users: User[];
     lastDelete: User[] = [];
     countId: number;
+    changeForm = false;
+    numUserChange: number;
+
 
     constructor() {
         this.users = this.users = JSON.parse(localStorage.getItem(LOCAL_USERS_KEY)) || [];
         this.countId = this.getMaxId();
         this.currentUser = this.getCurrentUser();
+
     }
 
     getMaxId() {
@@ -39,6 +43,7 @@ export class AppComponent {
     }
 
     addUser() {
+        this.changeForm = false;
         this.users.push(this.currentUser);
         this.currentUser = this.getCurrentUser();
         this.setDataLocalStorage(LOCAL_USERS_KEY, this.users);
@@ -59,6 +64,15 @@ export class AppComponent {
     }
 
     editUser(num: number) {
-        console.log(num);
+        this.changeForm = true;
+        this.numUserChange = num;
+        this.currentUser = Object.assign({}, this.users[num]);
+    }
+
+    userSave () {
+        this.users.splice(this.numUserChange, 1, this.currentUser);
+        this.currentUser = this.getCurrentUser();
+        this.changeForm = false;
+
     }
 }

@@ -12,4 +12,6 @@
     <label for="surName">Отчество: </label>
     <input id="surName" type="text" [(ngModel)]="user.surName">
 </p>
-<button (click)="onClick()">Добавить</button>
+
+<button (click)="onClick()" *ngIf="!changeForm">Добавить</button>
+<button (click)="onSave()" *ngIf="changeForm">Изменить</button>

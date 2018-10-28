@@ -1,3 +1,3 @@
-<app-user-form [(user)]="currentUser" (userChange)="addUser()"></app-user-form>
+<app-user-form [(user)]="currentUser" [changeForm]="changeForm" (userChange)="addUser()" (userSave)="userSave($event)"></app-user-form>
 <app-user-card [card]="currentUser"></app-user-card>
 <app-user-list [users]="users" (deleteChange)="deleteUser($event) " (cancelChange)="cancelDelete()" (editChange)="editUser($event)"></app-user-list>
