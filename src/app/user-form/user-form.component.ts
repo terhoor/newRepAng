@@ -20,18 +20,17 @@ export class UserFormComponent implements OnInit {
       });
       this.usersService.currentUser.subscribe((val) => {
         this.user = val;
+        console.log(val);
       });
     }
 
 
     addUser() {
       this.usersService.addUser();
-      // this.user = this.usersService.currentUser;
     }
 
     userSave () {
       this.usersService.userSave();
-      // this.user = this.usersService.currentUser;
 
     }
 }

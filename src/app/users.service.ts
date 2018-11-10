@@ -63,11 +63,12 @@ export class UsersService {
   editUser(num: number) {
     this.changeForm.next(true);
     this.numUserChange = num;
-    this.currentUser = Object.assign({}, this.users[num]);
+    this.currentUser.next(Object.assign({}, this.users[num]));
+
   }
 
   userSave () {
-    this.users.splice(this.numUserChange, 1, this.currentUser);
+    this.users.splice(this.numUserChange, 1, this.currentUser.getValue());
     this.currentUser.next(this.getCurrentUser());
     this.changeForm.next(false);
 
