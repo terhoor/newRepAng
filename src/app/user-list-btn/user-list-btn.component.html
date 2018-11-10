@@ -3,11 +3,11 @@
 </div>
 
 <div *ngIf="name === 'отменить'">
-    <button (click)="onCancel()">{{ name }}</button>
+    <button (click)="onCancel()" [disabled]="!flag">{{ name }}</button>
 </div>
 
 <div *ngIf="name === 'удалить'">
-    <button (click)="onDel()">{{ name }}</button>
+    <button (click)="onDelete()">{{ name }}</button>
 </div>
 
 <div *ngIf="name === 'изменить'">

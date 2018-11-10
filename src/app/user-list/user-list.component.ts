@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {User} from '../shared/user.model';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-list',
@@ -8,22 +9,17 @@ import {User} from '../shared/user.model';
 
 })
 export class UserListComponent {
-    @Input() users: User[] = [];
-    @Output() deleteChange: EventEmitter<number> = new EventEmitter();
-    @Output() cancelChange: EventEmitter<void> = new EventEmitter();
-    @Output() editChange: EventEmitter<number> = new EventEmitter();
+  @Input() users: User[];
+  @Input() lastDelete: User[];
 
+  constructor() {
+  }
 
-    onDelete(num: number) {
-        this.deleteChange.emit(num);
+  checkCancel() {
+    if (this.lastDelete.length !== 0) {
+      return true;
     }
-
-    onEdit(num: number) {
-        this.editChange.emit(num);
-    }
-
-    onCancel() {
-        this.cancelChange.emit();
-    }
+    return false;
+  }
 
 }

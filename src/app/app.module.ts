@@ -8,6 +8,7 @@ import { UserCardComponent } from './user-card/user-card.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListElementComponent } from './user-list-element/user-list-element.component';
 import { UserListBtnComponent } from './user-list-btn/user-list-btn.component';
+import { UsersService } from './users.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { UserListBtnComponent } from './user-list-btn/user-list-btn.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

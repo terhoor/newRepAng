@@ -13,5 +13,5 @@
     <input id="surName" type="text" [(ngModel)]="user.surName">
 </p>
 
-<button (click)="onClick()" *ngIf="!changeForm">Добавить</button>
-<button (click)="onSave()" *ngIf="changeForm">Изменить</button>
+<button (click)="addUser()" *ngIf="!changeForm">Добавить</button>
+<button (click)="userSave()" *ngIf="changeForm">Изменить</button>

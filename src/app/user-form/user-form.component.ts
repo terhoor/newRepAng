@@ -1,23 +1,37 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {User} from '../shared/user.model';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.css']
 })
-export class UserFormComponent {
-    @Input() user: User;
-    @Input() changeForm: boolean;
-
-    @Output() userChange: EventEmitter<User> = new EventEmitter();
-    @Output() userSave: EventEmitter<User> = new EventEmitter();
-
-    onClick() {
-        this.userChange.emit(this.user);
+export class UserFormComponent implements OnInit {
+    changeForm: boolean;
+    user: User;
+    constructor(private usersService: UsersService) {
+      this.user = this.usersService.currentUser;
     }
 
-    onSave() {
-        this.userSave.emit();
+    ngOnInit() {
+      this.usersService.changeForm.subscribe((val) => {
+        this.changeForm = val;
+      });
+      this.usersService.currentUser.subscribe((val) => {
+        this.user = val;
+      });
+    }
+
+
+    addUser() {
+      this.usersService.addUser();
+      // this.user = this.usersService.currentUser;
+    }
+
+    userSave () {
+      this.usersService.userSave();
+      // this.user = this.usersService.currentUser;
+
     }
 }

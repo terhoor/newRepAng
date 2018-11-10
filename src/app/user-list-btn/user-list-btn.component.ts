@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UsersService } from '../users.service';
 // import {User} from '../shared/user.model';
 
 @Component({
@@ -7,30 +8,31 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
   styleUrls: ['./user-list-btn.component.css']
 })
 export class UserListBtnComponent {
-    @Input() countUsers: number;
-    @Input() name: string;
-    @Input() indexUser: number;
-    @Output() deleteChange: EventEmitter<number> = new EventEmitter();
-    @Output() cancelChange: EventEmitter<void> = new EventEmitter();
-    @Output() editChange: EventEmitter<number> = new EventEmitter();
+  @Input() name: string;
+  @Input() indexUser: number;
+  @Input() flag: boolean;
 
-    constructor() { }
-    onDelLast() {
-        const len: number = this.countUsers;
-        if (len > 0) {
-            this.deleteChange.emit(len - 1);
-        }
+  constructor(private usersService: UsersService) {
+  }
+
+  onDelLast() {
+    const len: number = this.usersService.users.length;
+    if (len > 0) {
+      this.usersService.deleteUser(len - 1);
     }
 
-    onDel() {
-        this.deleteChange.emit(this.indexUser);
-    }
+  }
 
-    onEdit() {
-        this.editChange.emit(this.indexUser);
-    }
+  onDelete() {
+    this.usersService.deleteUser(this.indexUser);
+  }
 
-    onCancel() {
-        this.cancelChange.emit();
-    }
+  onCancel() {
+    this.usersService.cancelDelete();
+  }
+
+  onEdit() {
+    this.usersService.editUser(this.indexUser);
+
+  }
 }
