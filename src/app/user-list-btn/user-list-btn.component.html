@@ -1,12 +1,12 @@
-<div *ngIf="name === 'Удалить последнего пользователя'">
+<!-- <div *ngIf="name === 'Удалить последнего пользователя'">
     <button (click)="onDelLast()">{{ name }}</button>
+</div> -->
+
+<div >
+    <button (click)="funcBtn()" [disabled]="flag">{{ name }}</button>
 </div>
 
-<div *ngIf="name === 'отменить'">
-    <button (click)="onCancel()" [disabled]="!flag">{{ name }}</button>
-</div>
-
-<div *ngIf="name === 'удалить'">
+<!-- <div *ngIf="name === 'удалить'">
     <button (click)="onDelete()">{{ name }}</button>
 </div>
 
@@ -14,4 +14,4 @@
     <button (click)="onEdit()">{{ name }}</button>
 </div>
 
-
+ -->

@@ -22,11 +22,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.usersService.changeForm = new Subject<boolean>();
-    /* this.usersService.currentUser.subscribe((val) => {
-      this.usersService.CopyCurrentUser = val;
 
-    }); */
-
-    
   }
 }

@@ -10,29 +10,66 @@ import { UsersService } from '../users.service';
 export class UserListBtnComponent {
   @Input() name: string;
   @Input() indexUser: number;
-  @Input() flag: boolean;
+  @Input() flag: boolean = false;
+  listButtonsData = [
+    {
+      name: 'Удалить последнего пользователя',
+      func: () => {
+        const len: number = this.usersService.users.length;
+        if (len > 0) {
+          this.usersService.deleteUser(len - 1);
+        }
+      }
+  },
+    {
+      name: 'отменить',
+      func: () => {
+        this.usersService.cancelDelete();
+      }
+  },
+    {
+      name: 'удалить',
+      func: () => {
+        this.usersService.deleteUser(this.indexUser);
+      }
+    },
+    {
+      name: 'изменить',
+      func: () => {
+        this.usersService.editUser(this.indexUser);
+      }
+    }
+  ];
 
   constructor(private usersService: UsersService) {
   }
 
-  onDelLast() {
-    const len: number = this.usersService.users.length;
-    if (len > 0) {
-      this.usersService.deleteUser(len - 1);
-    }
-
+  funcBtn() {
+    this.listButtonsData.forEach((dataObj) => {
+      if (dataObj.name === this.name) {
+        dataObj.func();
+      }
+    });
   }
 
-  onDelete() {
-    this.usersService.deleteUser(this.indexUser);
-  }
+  // onDelLast() {
+  //   const len: number = this.usersService.users.length;
+  //   if (len > 0) {
+  //     this.usersService.deleteUser(len - 1);
+  //   }
 
-  onCancel() {
-    this.usersService.cancelDelete();
-  }
+  // }
 
-  onEdit() {
-    this.usersService.editUser(this.indexUser);
+  // onDelete() {
+  //   this.usersService.deleteUser(this.indexUser);
+  // }
 
-  }
+  // onCancel() {
+  //   this.usersService.cancelDelete();
+  // }
+
+  // onEdit() {
+  //   this.usersService.editUser(this.indexUser);
+
+  // }
 }

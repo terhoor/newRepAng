@@ -17,9 +17,9 @@ export class UserListComponent {
 
   checkCancel() {
     if (this.lastDelete.length !== 0) {
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 
 }
