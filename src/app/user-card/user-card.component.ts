@@ -16,6 +16,7 @@ export class UserCardComponent implements OnInit {
   ngOnInit () {
     this.usersService.currentUser.subscribe((val) => {
       this.card = val;
+      console.log(this.card);
     });
   }
 

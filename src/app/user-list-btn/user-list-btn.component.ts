@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UsersService } from '../users.service';
-// import {User} from '../shared/user.model';
 
 @Component({
   selector: 'app-user-btn',
@@ -52,24 +51,4 @@ export class UserListBtnComponent {
     });
   }
 
-  // onDelLast() {
-  //   const len: number = this.usersService.users.length;
-  //   if (len > 0) {
-  //     this.usersService.deleteUser(len - 1);
-  //   }
-
-  // }
-
-  // onDelete() {
-  //   this.usersService.deleteUser(this.indexUser);
-  // }
-
-  // onCancel() {
-  //   this.usersService.cancelDelete();
-  // }
-
-  // onEdit() {
-  //   this.usersService.editUser(this.indexUser);
-
-  // }
 }

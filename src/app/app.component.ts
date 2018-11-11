@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   users: User[];
   lastDelete: User[];
   @ViewChild('button') button: ElementRef;
-  // count;
+
   constructor(private usersService: UsersService) {
       this.users = usersService.users;
       this.lastDelete = usersService.lastDelete;

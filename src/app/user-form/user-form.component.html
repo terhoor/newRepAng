@@ -1,17 +1,19 @@
 <h2>Добавить пользователя: </h2>
 
+<form [formGroup]="regForm">
 <p>
     <label for="lastName">Фамилия: </label>
-    <input id="lastName" type="text" [(ngModel)]="user.lastName">
+    <input id="lastName" type="text" formControlName="lastName">
 </p>
 <p>
     <label for="firstName">Имя: </label>
-    <input id="firstName" type="text" [(ngModel)]="user.firstName">
+    <input id="firstName" type="text" formControlName="firstName">
 </p>
 <p>
     <label for="surName">Отчество: </label>
-    <input id="surName" type="text" [(ngModel)]="user.surName">
+    <input id="surName" type="text" formControlName="surName">
 </p>
+</form>
 
 <button (click)="addUser()" *ngIf="!changeForm">Добавить</button>
 <button (click)="userSave()" *ngIf="changeForm">Изменить</button>

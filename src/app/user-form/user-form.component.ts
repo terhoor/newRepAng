@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../shared/user.model';
 import { UsersService } from '../users.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-form',
@@ -9,28 +10,44 @@ import { UsersService } from '../users.service';
 })
 export class UserFormComponent implements OnInit {
     changeForm: boolean;
+    regForm: FormGroup;
     user: User;
     constructor(private usersService: UsersService) {
-      this.user = this.usersService.currentUser;
+
     }
 
     ngOnInit() {
+      this.regForm = new FormGroup({
+        lastName: new FormControl(''),
+        firstName: new FormControl(''),
+        surName: new FormControl('')
+      });
       this.usersService.changeForm.subscribe((val) => {
         this.changeForm = val;
       });
-      this.usersService.currentUser.subscribe((val) => {
-        this.user = val;
-        console.log(val);
+      this.usersService.currentUser.subscribe((user) => {
+        this.user = user;
+        this.regForm.setValue({
+          lastName: user.lastName,
+          firstName: user.firstName,
+          surName: user.surName
+        });
       });
     }
 
 
     addUser() {
+      this.user = Object.assign(this.user, this.regForm.value);
+      this.usersService.currentUser.next(this.user);
       this.usersService.addUser();
+      this.regForm.reset();
     }
 
     userSave () {
+      this.user = Object.assign(this.user, this.regForm.value);
+      this.usersService.currentUser.next(this.user);
       this.usersService.userSave();
+
 
     }
 }
