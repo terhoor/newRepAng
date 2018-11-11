@@ -33,19 +33,20 @@ export class UserFormComponent implements OnInit {
           surName: user.surName
         });
       });
+      this.regForm.valueChanges.subscribe(() => {
+        this.user = Object.assign(this.user, this.regForm.value);
+      });
     }
 
 
     addUser() {
-      this.user = Object.assign(this.user, this.regForm.value);
-      this.usersService.currentUser.next(this.user);
+      // this.usersService.currentUser.next(this.user);
       this.usersService.addUser();
       this.regForm.reset();
     }
 
     userSave () {
-      this.user = Object.assign(this.user, this.regForm.value);
-      this.usersService.currentUser.next(this.user);
+      // this.usersService.currentUser.next(this.user);
       this.usersService.userSave();
 
 
